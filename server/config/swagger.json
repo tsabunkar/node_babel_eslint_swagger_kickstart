@@ -1,0 +1,71 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "3.0.0",
+        "title": "Swagger Invoice API Documentation",
+        "description": "A sample API that uses a Invoice as an example to demonstrate features in the swagger-2.0 specification",
+        "contact": {
+            "name": "Tejas S Sabunkar",
+            "url": "https://github.com/tsabunkar",
+            "email": "tsabunkar@gmail.com"
+        },
+        "license": {
+            "name": "MIT Liscense",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "tags": [{
+        "name": "InvoicesMessages",
+        "description": "API's for Invoices"
+    }],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/invoice": {
+            "get": {
+                "tags": ["InvoicesMessages"],
+                "summary": "Get All Invoices Messages",
+                "description": "Get All",
+                "responses": {
+                    "200": {
+                        "description": "Okay found all items",
+                        "schema": {
+                            "$ref": "#/definitions/Invoices"
+                        }
+                    }
+                }
+            }
+
+        }
+    },
+    "definitions": {
+        "InvoicesModelSchema": {
+            "required": [
+                "id",
+                "item"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "Invoices": {
+            "type": "array",
+            "$ref": "#definitions/InvoicesModelSchema"
+        }
+    }
+}
